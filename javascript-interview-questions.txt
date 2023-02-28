@@ -1,0 +1,166 @@
+1)JavaScript Program to Create Objects in Different Ways
+
+You can create an object in three different ways:
+
+a)Using object literal
+b)By creating instance of Object directly
+c)By using constructor function
+
+a)Using object literal
+
+// program to create JavaScript object using object literal
+const person = { 
+    name: 'John',
+    age: 20,
+    hobbies: ['reading', 'games', 'coding'],
+    greet: function() {
+        console.log('Hello everyone.');
+    },
+    score: {
+        maths: 90,
+        science: 80
+    }
+};
+
+console.log(typeof person); // object
+
+// accessing the object value
+console.log(person.name);
+console.log(person.hobbies[0]);
+person.greet();
+console.log(person.score.maths);
+
+
+b)Create an Object using Instance of Object Directly
+
+
+// program to create JavaScript object using instance of an object
+const person = new Object ( { 
+    name: 'John',
+    age: 20,
+    hobbies: ['reading', 'games', 'coding'],
+    greet: function() {
+        console.log('Hello everyone.');
+    },
+    score: {
+        maths: 90,
+        science: 80
+    }
+});
+
+console.log(typeof person); // object
+
+// accessing the object value
+console.log(person.name);
+console.log(person.hobbies[0]);
+person.greet();
+console.log(person.score.maths);
+
+
+c)Create an object using Constructor Function
+
+// program to create JavaScript object using instance of an object
+
+function Person() {
+    this.name = 'John',
+    this.age = 20,
+    this.hobbies = ['reading', 'games', 'coding'],
+    this.greet = function() {
+        console.log('Hello everyone.');
+    },
+    this.score = {
+        maths: 90,
+        science: 80
+    }
+
+}
+
+const person = new Person();
+
+console.log(typeof person); // object
+
+// accessing the object value
+console.log(person.name);
+console.log(person.hobbies[0]);
+person.greet();
+console.log(person.score.maths);
+
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+2)splice vs. slice in JavaScript
+
+link : https://www.educative.io/answers/splice-vs-slice-in-javascript
+
+3)How do you compare Object and Map in javascript
+
+link : https://www.geeksforgeeks.org/map-vs-object-in-javascript/
+
+4)first class/order functions in javascript
+
+a function can be passed as an argument to other functions, can be returned by another function and 
+can be assigned as a value to a variable.
+
+link : https://developer.mozilla.org/en-US/docs/Glossary/First-class_Function
+
+
+5) What is a unary function/operator in javascript
+
+link : https://www.javascripttutorial.net/javascript-unary-operators/
+
+6) Pure Functions in JavaScript
+
+link : https://www.geeksforgeeks.org/pure-functions-in-javascript/
+
+7)How do you redeclare variables in switch block without an error
+
+link : https://github.com/sudheerj/javascript-interview-questions#how-do-you-redeclare-variables-in-switch-block-without-an-error
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

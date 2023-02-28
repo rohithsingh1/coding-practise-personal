@@ -1,0 +1,291 @@
+1) What is React ?
+    React is a front-end and open-source JavaScript library which is useful in developing user interface,
+    and reusable user interface(UI) components of mobile and web applications.
+
+
+    React.createElement(type,props,children):It creates a React element with given arguments.
+    type : type of the HTML element or component(h1,h2,h3,button,....)
+    props : The properties object eg: {style : {color : "blue"}} or event Handlers
+    children : anything you need to pass between the DOM elements.
+
+    eg : React.createElement(p,null,'Hello world')
+
+    ReactDOM.render(element,DOMnode): It takes a React Element and render it to a DOM node.
+    The first argument is which element or component needs to render in the DOM
+    the second argument is where to render in  the DOM.
+
+    eg: ReactDOM.render(<App />, document.getElementById('root'))
+
+
+
+
+
+2)what is useState() ?
+    usestate is a special functions that takes the initial value as argument and
+    returns the array of two elements
+    first element is the initial state 
+    second element is a function that is used for updating the state.
+
+    import React,{useState} from 'react'
+
+function UseState() {
+    const [count,setCount] = useState(5)
+    function incrementHandler(){
+        setCount((prevCount)=>{
+            return prevCount + 1
+        })
+    }
+    function decrementHandler(){
+        setCount((prevCount)=>{
+            return prevCount - 1
+        })
+    }
+  return (
+    <div>
+        <h2>use of useState</h2>
+        <button onClick={decrementHandler}>-</button>
+        <span>{count}</span>
+        <button onClick={incrementHandler}>+</button>
+    </div>
+  )
+}
+
+export default UseState
+
+
+
+3) keys in ReactJS ?
+    A key is a special string attribute, that a user should include while rendering the list of elements in React.
+    keys used to give uniquness to each each element in the list
+
+    import React,{useState} from 'react'
+
+function Key() {
+    const arr = [1,2,3,4,5,6,7]
+  return (
+    <div>
+        <h2>use of Keys</h2>
+          <div>
+              <ul>
+                  {
+                      arr.map((element, index) => (
+                           (
+                              <li key={index.toString()}>{element}</li>
+                          )
+                      ))
+                  }
+              </ul>
+          </div>
+    </div>
+  )
+}
+
+export default Key
+
+
+4) JSX in ReactJS ?
+
+    JSX stands for JavaScript XML, it is extension of javascript language, It allows us to write HTML code
+    within the javascript code.
+    JSX allows us to put HTML elements into DOM without using createElement() or appendChild() methods.
+    As JSX is an expression, we can use it inside of " if statements ", " for loops ",assign to variables,
+    return it from functions, accept it as arguments.
+
+    Without using JSX, we would have to create an element by the following process:
+
+    import React from 'react'
+
+    function JsxPractise() {
+        const text=React.createElement('p', {}, 'This is a text')
+        const container = React.createElement('div',{},text)
+        return container
+    }
+
+    export default JsxPractise
+
+    Using JSX, the above code can be simplified:
+
+    import React from 'react'
+
+    function JsxPractise() {
+        return (
+            <div>
+                <p>This is a text</p>
+            </div>
+        )
+    }
+
+    export default JsxPractise
+
+
+5) What are the differences between functional and class components ?
+
+    Components :
+        components are the building blocks of any React app.
+        A component is an independent, reusable code block which divides the UI into smaller pieces.
+        components are like JavaScript functions. They accept inputs called " props " and return React elements.
+        Always start component names with a capital letter.
+        React treats components starting with lowercase letters as DOM tags. 
+        eg: <div /> represents an HTML div tag, but <App /> represents a component.
+
+
+    Functional Components:
+        It is a javascript function which accepts a single arguments called " props " and returns a React element.
+
+        import React from 'react'
+        function Welcome(props) {
+            return (
+                <div>
+                    <p>Hello {props.name}</p>
+                </div>
+            )
+        }
+        export default Welcome
+
+        function App() { 
+            return (
+                <div>
+                    <Welcome name={thakur rohith} />
+                </div>
+            );
+        }
+
+    Class Components:
+        A class component requires you to extend from React.Component and create a render function 
+        which returns a React element.
+        It must have the render() method returning JSX
+
+        import React from 'react'
+        class Welcome extends React.Component {
+            render() {
+                return <h1>Hello, {this.props.name}</h1>;
+            }
+        }
+        export default Welcome
+
+        function App() { 
+            return (
+                <div>
+                    <Welcome name={thakur rohith} />
+                </div>
+            );
+        }
+
+        Props in React
+            React has a special object called a prop (stands for property) which we use to transport data 
+            from one component to another.
+            props only transport data in a one-way flow (only from parent to child components).
+
+
+6) What are the differences between controlled and uncontrolled components ?
+
+    link : https://www.youtube.com/watch?v=zdQQraZEgnc
+
+    Controlled and uncontrolled components are just different approaches to handling " input form elements " in react.
+    Controlled component :
+        In a controlled component, the value of the input element is controlled by React.
+        When a user enters data inside the input element of a controlled component, onChange function gets triggered 
+        inside the code, and display the data below the form.
+
+        import React, { useState } from "react";
+
+function ControlledForm() {
+  const [name, setName] = useState("");
+  const inputHandler = (e) => {
+    setName(e.target.value);
+  };
+  return (
+    <div>
+      <h3>controlled form</h3>
+      <form action="">
+        <div>
+          <label htmlFor="luckyName">enter the lucky name</label>
+          <input type="text" id="luckyName" onChange={inputHandler} />
+        </div>
+        <button>Submit</button>
+      </form>
+      {name.toUpperCase()}
+    </div>
+  );
+}
+
+export default ControlledForm;
+
+
+
+    uncontrolled form :
+        In an uncontrolled component, the value of the input element is handled by the DOM itself.
+        Input elements inside uncontrolled components work just like normal HTML input form elements.
+        The state of the input element is handled by the DOM.
+        (i.e how you access input form elements in plain javascript code
+            let inputTag = document.getElementByTagName('input')
+            console.log(inputTag.value.toUpperCase())
+        )
+        but we cannot write plain javascript code in JSX code to access uncontrolled form elements.
+        so we use ' UseRef hook ' . by using this hook we get the reference of input tag form DOM itself.
+        similar to "  let inputTag = document.getElementByTagName('input') "
+
+        import React,{useRef,useState} from 'react'
+
+function UseRef() {
+    const inputref=useRef(null)
+    const [show, Setshow] = useState(false)
+    let name = null
+    const submitForm=(e) => {
+        e.preventDefault()
+        name=inputref.current.value
+        name? Setshow(!show):alert('please enter your luckyname!!!!')
+    }
+  return (
+      <div>
+          <h2>usage of useref in uncontrolled forms </h2>
+          <form action="" onSubmit={submitForm}>
+              <div>
+                   <label htmlFor="uncontrolledform">enter your luckyname</label>
+                    <input type="text" id="uncontrolledform" ref={inputref} />
+              </div>
+              <button>Submit</button>
+          </form>
+          {
+              show ? `your lucky name is ${inputref.current.value.toUpperCase()}` : ''
+          }
+    </div>
+  )
+}
+
+export default UseRef
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
